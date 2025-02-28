@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>病娇对话</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #282828;
+            color: #f8f8f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 600px;
+            background-color: #3b3b3b;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .dialogue {
+            font-size: 1.2em;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #ff79c6;
+            color: #282828;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #bd93f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>病娇对话</h1>
+        <div class="dialogue" id="dialogue">你真的想了解我吗？</div>
+        <button class="button" onclick="nextDialogue()">继续</button>
+    </div>
+
+    <script>
+        const dialogues = [
+            "你真的想了解我吗？",
+            "你知道我有多在乎你吗？",
+            "别离开我，好吗？",
+            "我... 我会很生气的！",
+            "你要是敢离开我，我... 我会杀了你！",
+            "不，我不是那个意思！我只是很在乎你！",
+            "别走，别离开我，我会变得更好！",
+            "你相信我吗？",
+            "我... 我爱你。",
+            "别忘了，我会一直在你身边。"
+        ];
+
+        let currentDialogueIndex = 0;
+
+        function nextDialogue() {
+            const dialogueElement = document.getElementById('dialogue');
+            if (currentDialogueIndex < dialogues.length) {
+                dialogueElement.textContent = dialogues[currentDialogueIndex];
+                currentDialogueIndex++;
+            } else {
+                dialogueElement.textContent = "对话结束。";
+                document.querySelector('.button').style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
