@@ -1,0 +1,42 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+
+# 创建爱心的参数方程
+def heart_shape(t):
+    x = 16 * np.sin(t)**3
+    y = 13 * np.cos(t) - 5 * np.cos(2 * t) - 2 * np.cos(3 * t) - np.cos(4 * t)
+    return x, y
+
+# 初始化图形
+fig, ax = plt.subplots()
+ax.set_xlim(-20, 20)
+ax.set_ylim(-20, 20)
+ax.set_aspect('equal')
+ax.axis('off')  # 关闭坐标轴
+
+# 创建爱心路径
+t = np.linspace(0, 2 * np.pi, 1000)
+heart_x, heart_y = heart_shape(t)
+line, = ax.plot(heart_x, heart_y, color='red', linewidth=2)
+
+# 创建闪烁的点
+scatter_x = np.linspace(-20, 20, 50)
+scatter_y = np.linspace(-20, 20, 50)
+scatter_x, scatter_y = np.meshgrid(scatter_x, scatter_y)
+scatter_x = scatter_x.flatten()
+scatter_y = scatter_y.flatten()
+scatter = ax.scatter(scatter_x, scatter_y, color='red', alpha=0.0)
+
+# 动画更新函数
+def update(frame):
+    # 更新闪烁点的透明度
+    scatter.set_offsets(np.column_stack((scatter_x, scatter_y)))
+    scatter.set_alpha(np.abs(np.sin(frame / 10)) * 0.8)
+    return scatter,
+
+# 创建动画
+ani = animation.FuncAnimation(fig, update, frames=np.arange(0, 100), interval=50)
+
+# 显示动画
+plt.show()
