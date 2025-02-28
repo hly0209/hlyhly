@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱心动图特效</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            overflow: hidden; /* 防止滚动条出现 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .heart {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: url('https://i.imgur.com/8r7jz6W.png') no-repeat center center;
+            background-size: cover;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.2;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="heart" id="heart"></div>
+
+    <script>
+        // 获取爱心元素
+        const heart = document.getElementById('heart');
+
+        // 随机生成初始位置
+        function randomPosition() {
+            const x = Math.random() * (window.innerWidth - 100); // 减去爱心宽度
+            const y = Math.random() * (window.innerHeight - 100); // 减去爱心高度
+            heart.style.left = `${x}px`;
+            heart.style.top = `${y}px`;
+        }
+
+        // 初始化位置
+        randomPosition();
+
+        // 随机移动爱心
+        setInterval(randomPosition, 2000); // 每2秒随机移动一次
+
+        // 鼠标移动时跟随鼠标
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX - 50; // 减去爱心宽度的一半
+            const y = e.clientY - 50; // 减去爱心高度的一半
+            heart.style.left = `${x}px`;
+            heart.style.top = `${y}px`;
+        });
+    </script>
+</body>
+</html>
