@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人简介</title>
+    <style>
+        /* 基本样式 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #444;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* 隐藏和显示内容的样式 */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>欢迎来到我的个人简介</h1>
+    </header>
+
+    <nav>
+        <a href="#" onclick="showContent('about')">关于我</a>
+        <a href="#" onclick="showContent('skills')">技能</a>
+        <a href="#" onclick="showContent('contact')">联系方式</a>
+    </nav>
+
+    <div class="container">
+        <div id="about" class="content">
+            <h2>关于我</h2>
+            <p>嗨，我是秦始皇。</p>
+        </div>
+
+        <div id="skills" class="content hidden">
+            <h2>我的技能</h2>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>Python</li>
+            </ul>
+        </div>
+
+        <div id="contact" class="content hidden">
+            <h2>联系方式</h2>
+            <p>邮箱：3546587661@qq.com</p>
+            <p>电话：17623530209</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 我的个人网站</p>
+    </footer>
+
+    <script>
+        // JavaScript 功能：根据点击切换内容显示
+        function showContent(id) {
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => {
+                if (content.id === id) {
+                    content.classList.remove('hidden');
+                } else {
+                    content.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
