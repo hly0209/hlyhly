@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylish CD Player</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+       .music-player {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+       .cd-wrapper {
+            position: relative;
+            width: 300px;
+            height: 300px;
+        }
+
+       .cd {
+            width: 100%;
+            height: 100%;
+            background: url('https://dummyimage.com/300x300/000/fff&text=CD+Cover') center/cover;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            animation: spin 5s linear infinite;
+            position: relative;
+        }
+
+       .cd::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+       .lyrics {
+            width: 300px;
+            height: 150px;
+            overflow: hidden;
+            position: relative;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+       .lyrics p {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            animation: scroll 20s linear infinite;
+            white-space: pre-line;
+            color: #fff;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+       .controls {
+            display: flex;
+            gap: 20px;
+        }
+
+       .play-pause-btn {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            position: relative;
+            transition: background 0.3s ease;
+        }
+
+       .play-pause-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-40%, -50%);
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-left: 20px solid white;
+            opacity: 0;
+        }
+
+       .play-pause-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 25px;
+            background: white;
+            box-shadow: 14px 0 0 white;
+            opacity: 1;
+        }
+
+       .play-pause-btn.playing::before {
+            opacity: 1;
+        }
+
+       .play-pause-btn.playing::after {
+            opacity: 0;
+        }
+
+       .play-pause-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+       .progress-container {
+            width: 300px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+       .progress {
+            height: 100%;
+            background: #fff;
+            width: 0;
+            border-radius: 4px;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes scroll {
+            from {
+                top: 100%;
+            }
+            to {
+                top: -100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="music-player">
+        <div class="cd-wrapper">
+            <div class="cd"></div>
+        </div>
+        <div class="lyrics">
+            <p>
+                You're fast asleep I'm
+                I'm counting sheep
+                I'm in too deep
+                I'm in too deep
+                You been making me feel like I'm lonely baby
+                I don't know what I did wrong
+                I don't know what
+                Lately I been driving myself crazy baby oh oh
+                Girl you left me all alone you know that
+                Did I forget to feel
+                Everything is falling down
+                Baby this old world is nothing without you
+                I don't know what I can do
+                I thought it was real
+                But girl you got me crashing down
+                Baby I still love you Lord I know it's true
+                I don't know what I am to you
+                Now I'm all alone
+                Something in me hopes that you still love me baby oh yeah
+                But I know you been moving on I know that hey
+                Thinking like I been feeling this without you baby oh babe
+                I miss you more than I let on you know that
+                When our love was new
+                I remember holding you
+                Hoping everything you needed I could do
+                That I could do it all for you
+                I wish that it was true
+                But boy you left me here too long
+                Thinking I still love you Lord I know I do
+                But I'm never coming back to you
+                Now I'm on my own
+                On my own
+                On my own
+                Now I'm all alone
+                Counting sheep
+                I'm in too deep
+                You're mine to keep
+                You're fast asleep
+                I'm counting sheep
+                I'm in too deep
+                You're mine to keep
+                You're fast asleep
+                Now I'm all alone
+                Counting sheep
+                I'm in too deep
+                You're mine to keep
+                You're fast asleep
+                I'm counting sheep
+                I'm in too deep
+                You're mine to keep
+                You're fast asleep
+                Now I'm on my own
+                Counting sheep
+                I'm in too deep
+                You're mine to keep
+                You're fast asleep
+                Now I'm on my own
+                I'm counting sheep
+                I'm in too deep
+                You're mine to keep
+                You're fast asleep
+                I'm counting sheep
+                I'm in too deep
+                You're mine to keep
+                You're fast asleep I'm
+            </p>
+        </div>
+        <div class="controls">
+            <button class="play-pause-btn" id="play-pause"></button>
+        </div>
+        <div class="progress-container" id="progress-container">
+            <div class="progress" id="progress"></div>
+        </div>
+    </div>
+    <audio id="audio" autoplay loop>
+        <source src="https://file-examples.com/storage/fefb77683d69e17d99769d7/2017/11/file_example_MP3_700KB.mp3" type="audio/mpeg">
+        你的浏览器不支持音频播放。
+    </audio>
+    <script>
+        const audio = document.getElementById('audio');
+        const playPauseButton = document.getElementById('play-pause');
+        const progress = document.getElementById('progress');
+        const progressContainer = document.getElementById('progress-container');
+
+        playPauseButton.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playPauseButton.classList.add('playing');
+            } else {
+                audio.pause();
+                playPauseButton.classList.remove('playing');
+            }
+        });
+
+        audio.addEventListener('timeupdate', () => {
+            const percent = (audio.currentTime / audio.duration) * 100;
+            progress.style.width = `${percent}%`;
+        });
+
+        progressContainer.addEventListener('click', (e) => {
+            const width = progressContainer.clientWidth;
+            const clickX = e.offsetX;
+            const duration = audio.duration;
+            audio.currentTime = (clickX / width) * duration;
+        });
+    </script>
+</body>
+
+</html>    
